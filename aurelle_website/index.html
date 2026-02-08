@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>F ORGANICS USA | Curated Luxury</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400&family=Playfair+Display:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root { --accent: #a8947e; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: #fff; overflow: hidden; -webkit-font-smoothing: antialiased; }
+        
+        /* Navigation */
+        nav { padding: 40px 5%; display: flex; justify-content: space-between; position: fixed; width: 100%; z-index: 100; transition: 0.3s; }
+        .logo { font-family: 'Playfair Display', serif; font-size: 18px; letter-spacing: 5px; text-decoration: none; color: #000; text-transform: uppercase; }
+        .nav-links a { margin-left: 30px; text-decoration: none; color: #666; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; transition: 0.3s; }
+        .nav-links a:hover { color: #000; }
+
+        /* Hero Section */
+        .hero { height: 100vh; display: flex; align-items: center; position: relative; background: #f9f9f9; }
+        
+        /* 使用您提供的新图片链接 */
+        .hero-img { 
+            position: absolute; 
+            right: 0; 
+            top: 0; 
+            width: 58%; 
+            height: 100%; 
+            object-fit: cover; 
+            object-position: center;
+        }
+
+        .hero-text { padding-left: 8%; z-index: 2; max-width: 650px; }
+        .hero-text span { font-size: 10px; letter-spacing: 6px; color: var(--accent); text-transform: uppercase; margin-bottom: 25px; display: block; font-weight: 500; }
+        .hero-text h1 { font-family: 'Playfair Display', serif; font-size: 4.8rem; font-weight: 400; line-height: 1.05; margin-bottom: 45px; color: #1a1a1a; letter-spacing: -2px; }
+        
+        .btn { 
+            display: inline-block; 
+            padding: 22px 55px; 
+            background: #1a1a1a; 
+            color: #fff; 
+            text-decoration: none; 
+            font-size: 10px; 
+            letter-spacing: 3px; 
+            text-transform: uppercase; 
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .btn:hover { background: var(--accent); transform: translateY(-2px); }
+
+        /* Footer Overlay */
+        .footer-minimal { position: absolute; bottom: 40px; left: 8%; z-index: 3; font-size: 9px; letter-spacing: 2px; color: #999; text-transform: uppercase; }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero-img { width: 100%; opacity: 0.25; }
+            .hero-text h1 { font-size: 3.5rem; }
+            .nav-links { display: none; }
+        }
+        @media (max-width: 768px) {
+            .hero-text h1 { font-size: 2.8rem; }
+            .hero-text { padding-left: 5%; padding-right: 5%; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html" class="logo">F ORGANICS USA</a>
+        <div class="nav-links">
+            <a href="collection.html">Collection</a>
+            <a href="philosophy.html">Philosophy</a>
+            <a href="founder.html">Founder</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <!-- 指定的首页主图 -->
+        <img src="https://i.postimg.cc/8chHr71F/danielapertsevaya_post_2024_9_15_16_31_073457524545080362853.jpg" class="hero-img" alt="F Organics Aesthetic">
+        
+        <div class="hero-text">
+            <span>By Emma Smith</span>
+            <h1>The New Standard <br> of Ritual.</h1>
+            <a href="collection.html" class="btn">Explore The Collection</a>
+        </div>
+    </section>
+
+    <div class="footer-minimal">
+        &copy; 2026 F ORGANICS USA &nbsp; | &nbsp; EmmaSmith@aurellelaboratories.com
+    </div>
+
+</body>
+</html>
