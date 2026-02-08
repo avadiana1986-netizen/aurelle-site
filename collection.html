@@ -3,102 +3,137 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Collection | AURELLE</title>
+    <title>The Prestige Collection | F ORGANICS USA</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
     <style>
+        :root { --accent: #a8947e; --text: #1a1a1a; --bg: #ffffff; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; background: #fff; color: #1a1a1a; overflow: hidden; -webkit-font-smoothing: antialiased; }
-        nav { padding: 30px 5%; display: flex; justify-content: space-between; position: fixed; top: 0; width: 100%; background: transparent; z-index: 100; }
-        .logo { font-family: 'Playfair Display', serif; text-decoration: none; color: #000; letter-spacing: 5px; font-size: 20px; text-transform: uppercase; }
-        .nav-links a { text-decoration: none; color: #000; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; font-weight: 500; margin-left: 20px; }
-
-        .slider-wrapper { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; height: 100vh; width: 100vw; -ms-overflow-style: none; scrollbar-width: none; }
-        .slider-wrapper::-webkit-scrollbar { display: none; }
-
-        .slide { flex: 0 0 100vw; height: 100vh; scroll-snap-align: start; display: flex; align-items: center; padding: 0 10%; gap: 8%; }
-        .slide-image { flex: 1.2; height: 75vh; background: #fdfdfd; overflow: hidden; border-radius: 2px; box-shadow: 0 20px 40px rgba(0,0,0,0.03); }
-        .slide-image img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 1.5s ease; }
-        .slide:hover .slide-image img { transform: scale(1.03); }
-
-        .slide-content { flex: 0.8; }
-        .step-no { font-size: 10px; letter-spacing: 4px; color: #a8947e; text-transform: uppercase; margin-bottom: 25px; display: block; font-weight: 500; }
-        h2 { font-family: 'Playfair Display', serif; font-size: 3.5rem; font-weight: 400; margin-bottom: 30px; line-height: 1.1; letter-spacing: -1px; }
-        .desc { font-size: 15px; color: #555; line-height: 1.8; margin-bottom: 45px; font-weight: 300; max-width: 420px; }
+        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); -webkit-font-smoothing: antialiased; }
         
-        .benefits { display: grid; gap: 35px; }
-        .benefit-item h4 { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px; border-bottom: 1px solid #eee; display: inline-block; padding-bottom: 5px; color: #000; }
-        .benefit-item p { font-size: 13px; color: #888; line-height: 1.7; }
+        nav { padding: 30px 5%; display: flex; justify-content: space-between; align-items: center; position: fixed; width: 100%; top: 0; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); z-index: 1000; border-bottom: 1px solid #f2f2f2; }
+        .logo { font-family: 'Playfair Display', serif; font-size: 18px; letter-spacing: 5px; text-decoration: none; color: #000; text-transform: uppercase; }
+        .nav-links a { margin-left: 35px; text-decoration: none; color: #666; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; }
 
-        .slider-nav { position: fixed; bottom: 60px; right: 10%; display: flex; gap: 15px; z-index: 100; }
-        .nav-btn { width: 55px; height: 55px; border: 1px solid #eee; background: rgba(255,255,255,0.8); backdrop-filter: blur(10px); cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.4s ease; font-size: 18px; }
-        .nav-btn:hover { background: #000; color: #fff; border-color: #000; }
+        .collection-header { padding: 180px 5% 60px; text-align: center; }
+        .collection-header span { font-size: 10px; letter-spacing: 5px; color: var(--accent); text-transform: uppercase; display: block; margin-bottom: 15px; }
+        .collection-header h1 { font-family: 'Playfair Display', serif; font-size: 3rem; font-weight: 400; }
 
-        .email-fixed { position: fixed; bottom: 60px; left: 10%; z-index: 100; }
-        .email-btn { display: inline-block; padding: 20px 45px; background: #000; color: #fff; text-decoration: none; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; transition: all 0.3s ease; border: 1px solid #000; }
-        .email-btn:hover { background: transparent; color: #000; }
+        /* 优化为 3 列布局 */
+        .product-grid { max-width: 1400px; margin: 0 auto; padding: 0 5% 100px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 60px 30px; }
+        
+        .product-card { text-decoration: none; color: inherit; display: block; transition: 0.4s; }
+        .image-container { position: relative; background: #fbfbfb; aspect-ratio: 1/1; overflow: hidden; display: flex; align-items: center; justify-content: center; padding: 40px; }
+        .image-container img { max-width: 100%; max-height: 100%; object-fit: contain; transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+        
+        .product-card:hover .image-container img { transform: scale(1.05); }
+        .shop-tag { position: absolute; bottom: 20px; font-size: 9px; letter-spacing: 2px; text-transform: uppercase; opacity: 0; transition: 0.4s; color: var(--accent); border-bottom: 1px solid var(--accent); }
+        .product-card:hover .shop-tag { opacity: 1; }
+
+        .product-meta { padding-top: 25px; text-align: center; }
+        .brand { font-size: 9px; letter-spacing: 3px; color: #999; text-transform: uppercase; margin-bottom: 8px; display: block; }
+        .name { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: #1a1a1a; line-height: 1.4; min-height: 3em; }
+
+        footer { padding: 80px 5%; border-top: 1px solid #f2f2f2; text-align: center; font-size: 10px; letter-spacing: 2px; color: #aaa; text-transform: uppercase; }
+
+        @media (max-width: 1024px) { .product-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 768px) { .product-grid { grid-template-columns: 1fr; } .collection-header h1 { font-size: 2.2rem; } }
     </style>
 </head>
 <body>
+
     <nav>
-        <a href="index.html" class="logo">AURELLE</a>
+        <a href="index.html" class="logo">F ORGANICS USA</a>
         <div class="nav-links">
-            <a href="index.html">Home</a>
+            <a href="collection.html">Collection</a>
             <a href="philosophy.html">Philosophy</a>
+            <a href="founder.html">Founder</a>
         </div>
     </nav>
 
-    <div class="slider-wrapper" id="slider">
-        <section class="slide">
-            <div class="slide-image"><img src="https://i.postimg.cc/MKZMB9mP/p1.jpg" alt="Micellar Radiance Water"></div>
-            <div class="slide-content">
-                <span class="step-no">Phase 01 / Prepare</span>
-                <h2>Micellar Radiance Water</h2>
-                <p class="desc">A pristine clinical water that captures impurities and micro-pollutants in a single gesture, leaving skin perfectly prepped.</p>
-                <div class="benefits">
-                    <div class="benefit-item"><h4>Formulation</h4><p>Infused with triple-filtered sea minerals and botanical enzymes.</p></div>
-                </div>
+    <header class="collection-header">
+        <span>Curated Luxury Selection</span>
+        <h1>Prestige Beauty Archive</h1>
+    </header>
+
+    <main class="product-grid">
+        <!-- Product 1: Sensai -->
+        <a href="https://ichibanm.com/products/sensai-utm-the-cleansing-oil" class="product-card" target="_blank">
+            <div class="image-container">
+                <img src="https://i.postimg.cc/Pfvym6Xw/p1.webp" alt="Sensai UTM The Cleansing Oil">
+                <div class="shop-tag">Discover</div>
             </div>
-        </section>
-
-        <section class="slide">
-            <div class="slide-image"><img src="https://i.postimg.cc/FzTKGQVF/p2.jpg" alt="Cellular Nectar Serum"></div>
-            <div class="slide-content">
-                <span class="step-no">Phase 02 / Treatment</span>
-                <h2>Cellular Nectar Serum</h2>
-                <p class="desc">The pinnacle of molecular science. This serum recharges cellular energy for a luminous glow.</p>
-                <div class="benefits">
-                    <div class="benefit-item"><h4>Clinical Result</h4><p>Significant increase in skin density within 14 days.</p></div>
-                </div>
+            <div class="product-meta">
+                <span class="brand">Sensai</span>
+                <h2 class="name">UTM The Cleansing Oil</h2>
             </div>
-        </section>
+        </a>
 
-        <section class="slide">
-            <div class="slide-image"><img src="https://i.postimg.cc/dQ6DJ8cY/p3.jpg" alt="Molecular Silk Complex"></div>
-            <div class="slide-content">
-                <span class="step-no">Phase 03 / Hydration</span>
-                <h2>Molecular Silk Complex</h2>
-                <p class="desc">A weightless yet potent barrier cream that locks in hydration for 72 continuous hours.</p>
-                <div class="benefits">
-                    <div class="benefit-item"><h4>Texture</h4><p>Ultra-fine silk finish, perfect for all-day urban protection.</p></div>
-                </div>
+        <!-- Product 2: Hacci -->
+        <a href="https://ichibanm.com/products/hacci-ornament-snow" class="product-card" target="_blank">
+            <div class="image-container">
+                <img src="https://i.postimg.cc/wxR2hWqQ/p2.jpg" alt="Hacci Ornament Snow">
+                <div class="shop-tag">Discover</div>
             </div>
-        </section>
-    </div>
+            <div class="product-meta">
+                <span class="brand">Hacci</span>
+                <h2 class="name">Ornament Snow Limited Edition</h2>
+            </div>
+        </a>
 
-    <div class="email-fixed">
-        <a href="mailto:emmasmith@aurellelaboratories.com" class="email-btn">Order Inquiry</a>
-    </div>
+        <!-- Product 3: CPB -->
+        <a href="https://ichibanm.com/products/cle-de-peau-beaute-synactif-cream" class="product-card" target="_blank">
+            <div class="image-container">
+                <img src="https://i.postimg.cc/pV5CD0W8/p3.webp" alt="Cle de Peau Beaute Synactif Cream">
+                <div class="shop-tag">Discover</div>
+            </div>
+            <div class="product-meta">
+                <span class="brand">Clé de Peau Beauté</span>
+                <h2 class="name">Synactif Intensive Cream</h2>
+            </div>
+        </a>
 
-    <div class="slider-nav">
-        <button class="nav-btn" onclick="scrollSlider(-1)">&#8592;</button>
-        <button class="nav-btn" onclick="scrollSlider(1)">&#8594;</button>
-    </div>
+        <!-- Product 4: Decorte -->
+        <a href="https://ichibanm.com/products/decorte-aq-meliority-intensive-regenerating-multi-cream" class="product-card" target="_blank">
+            <div class="image-container">
+                <img src="https://i.postimg.cc/2ydB0L9s/p4.webp" alt="Decorte AQ Meliority Cream">
+                <div class="shop-tag">Discover</div>
+            </div>
+            <div class="product-meta">
+                <span class="brand">Decorté</span>
+                <h2 class="name">AQ Meliority Regenerating Multi Cream</h2>
+            </div>
+        </a>
 
-    <script>
-        const slider = document.getElementById('slider');
-        function scrollSlider(direction) {
-            slider.scrollBy({ left: direction * window.innerWidth, behavior: 'smooth' });
-        }
-    </script>
+        <!-- Product 5: Helena Rubinstein -->
+        <a href="https://ichibanm.com/products/helena-rubinstein-prodigy-cellglow-essence-emulsion?variant=39726573387960" class="product-card" target="_blank">
+            <div class="image-container">
+                <img src="https://i.postimg.cc/v8xhWPYn/p5.webp" alt="Helena Rubinstein Cellglow">
+                <div class="shop-tag">Discover</div>
+            </div>
+            <div class="product-meta">
+                <span class="brand">Helena Rubinstein</span>
+                <h2 class="name">Prodigy Cellglow Essence Emulsion</h2>
+            </div>
+        </a>
+
+        <!-- Product 6: The Ginza -->
+        <a href="https://ichibanm.com/products/the-ginza-essence-empowering-p" class="product-card" target="_blank">
+            <div class="image-container">
+                <img src="https://i.postimg.cc/MZf5ys6y/p6.webp" alt="The Ginza Essence Empowering">
+                <div class="shop-tag">Discover</div>
+            </div>
+            <div class="product-meta">
+                <span class="brand">The Ginza</span>
+                <h2 class="name">Essence Empowering P Day/Night</h2>
+            </div>
+        </a>
+    </main>
+
+    <footer>
+        &copy; 2026 F ORGANICS USA &nbsp; | &nbsp; Partnered with Ichiban Mart
+        <br><br>
+        Enquiries: EmmaSmith@aurellelaboratories.com
+    </footer>
+
 </body>
 </html>
